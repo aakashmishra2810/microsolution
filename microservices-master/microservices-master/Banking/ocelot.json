@@ -1,0 +1,80 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/Cheque",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "chequebook",
+      "UpstreamPathTemplate": "/cheque/{catchAll}"
+    },
+    {
+      "DownstreamPathTemplate": "/api/account",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "account",
+      "UpstreamPathTemplate": "/account/{catchAll}",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/api/Transaction",
+      "DownstreamScheme": "https",
+      "UseServiceDiscovery": true,
+      "ServiceName": "transaction",
+      "UpstreamPathTemplate": "/transactions/{catchAll}",
+      "UpstreamHttpMethod": []
+    }
+  ],
+  "GlobalConfiguration": {
+    "UseServiceDiscovery": true,
+    "ServiceDiscoveryProvider": {
+      "Type": "Eureka",
+      "Host": "localhost",
+      "Port": "8761"
+    }
+  }
+}
+
+//{
+//  "ReRoutes": [
+//    {
+//      "DownstreamPathTemplate": "/api/Cheque",
+//      "DownstreamScheme": "https",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": 7002
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/chequebook/{catchAll}"
+//      //"UpstreamHttpMethod": [ "Get" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/Account",
+//      "DownstreamScheme": "https",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": 7001
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/account/{catchAll}",
+//      "UpstreamHttpMethod": []
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/Transaction",
+//      "DownstreamScheme": "https",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": 7003
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/transactions/{catchAll}",
+//      "UpstreamHttpMethod": []
+//    }
+//  ],
+//  //GlobalConfiguration allows you to define the BaseUrl that Ocelot is going to listen to
+//  "GlobalConfiguration": {
+//    "BaseUrl": "https://localhost:7000"
+//  }
+//}
